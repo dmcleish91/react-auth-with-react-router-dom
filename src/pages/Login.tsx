@@ -18,10 +18,10 @@ function Login() {
   const location = useLocation();
 
   const redirectPath = location.state?.path || '/';
-  const auth = useAuth();
+  const { login } = useAuth();
 
   function handleLogin() {
-    auth.login({ name: user });
+    login({ name: user });
     navigate(redirectPath, { replace: true });
   }
 

@@ -26,6 +26,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   return <AuthContext.Provider value={{ user, login, logout }}>{children}</AuthContext.Provider>;
 }
 
+// utility function to make using context easier in components
 export function useAuth() {
   const currentAuthContext = useContext(AuthContext);
   if (!currentAuthContext) {

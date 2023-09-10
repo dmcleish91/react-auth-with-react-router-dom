@@ -1,12 +1,31 @@
 import { Routes, Route } from 'react-router-dom';
 import About from './pages/About';
-import Login from './pages/Login';
+import Navigation from './components/navbar';
+import { AuthProvider } from './lib/auth.context';
+import LoginPage from './pages/Login';
+import HomePage from './pages/Home';
+import ProfilePage from './pages/Profile';
+import RequireAuth from './components/requireauth';
 function App() {
   return (
-    <Routes>
-      <Route path='/' element={<Login />} />
-      <Route path='/about' element={<About />} />
-    </Routes>
+    <div className='h-min-screen antialiased w-[100vw]'>
+      <AuthProvider>
+        <Navigation />
+        <Routes>
+          <Route path='/' element={<HomePage />} />
+          <Route path='/login' element={<LoginPage />} />
+          <Route
+            path='/profile'
+            element={
+              <RequireAuth>
+                <ProfilePage />
+              </RequireAuth>
+            }
+          />
+          <Route path='/about' element={<About />} />
+        </Routes>
+      </AuthProvider>
+    </div>
   );
 }
 

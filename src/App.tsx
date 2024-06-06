@@ -6,6 +6,7 @@ import LoginPage from './pages/Login';
 import HomePage from './pages/Home';
 import ProfilePage from './pages/Profile';
 import RequireAuth from './components/requireauth';
+
 function App() {
   return (
     <div className='h-min-screen antialiased w-[100vw]'>
